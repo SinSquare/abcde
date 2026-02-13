@@ -16,11 +16,10 @@ http://localhost:8080/docs
 
 ### Query processing ###
 Natural language parsing is not an straight forward task. LLMs can be used to extract the data, but running LLM in this scope was not an option.
-Instead I implemented a technique similar to Named Entity Recognition - extract parts of the text using rules. This is of course not a very robust solution.
-As a general rule the first values will be used from the extracted values.
+Instead I implemented a technique similar to Named Entity Recognition - extract parts of the text using rules. This might not be a very robust solution.
 
 ### Database ###
-I've selected SQLite becuase of it's light weight, and also because no additional service was needed. Of course in a real-word product some kind of time-series database would be preferrable.
+I've selected SQLite because of it's light weight, and also because no additional service was needed. In a real-word product some kind of time-series database would be preferrable.
 
 Internally the database is stored in /tmp/database.db
 

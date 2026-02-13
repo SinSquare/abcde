@@ -1,8 +1,8 @@
 """Natural language query parsing"""
 
-from datetime import datetime, timedelta
+from datetime import datetime
 from sqlalchemy import and_, select, func
-
+from dateutil.relativedelta import relativedelta
 
 from abcde.sql_models import Sensor, SensorMetric, SensorValue
 from abcde.language_parser import SimilarityTag, ReTag, CompoundTag, DateTag
@@ -10,7 +10,7 @@ from abcde.language_parser import SimilarityTag, ReTag, CompoundTag, DateTag
 
 def last_to_dt(n, type_):
     kwargs = {type_: n}
-    return datetime.now() - timedelta(**kwargs)
+    return datetime.now() - relativedelta(**kwargs)
 
 
 EXTRACT_PIPES = {
