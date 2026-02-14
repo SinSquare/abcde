@@ -5,6 +5,7 @@ from pydantic import BaseModel, RootModel
 
 class QueryInput(BaseModel):
     """QueryInput"""
+
     query: str
 
 
