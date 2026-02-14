@@ -61,4 +61,5 @@ pylint abcde
 ## Additional commands ##
 ```bash
 poetry export --without-hashes --output requirements.txt
+fastapi dev abcde/main.py
 ```

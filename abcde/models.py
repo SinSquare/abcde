@@ -1,22 +1,24 @@
 """Request and response models."""
 
 from datetime import datetime
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, Field
 
 
 class QueryInput(BaseModel):
     """QueryInput"""
 
-    query: str
+    query: str = Field(
+        example="Give me the average temperature and humidity for sensor 1 in the last week."
+    )
 
 
 class SensorMetric(BaseModel):
     """SensorMetric"""
 
-    sensor: str
-    metric: str
-    unit: str
-    value: float
+    sensor: str = Field(example="sensor1")
+    metric: str = Field(example="temperature")
+    unit: str = Field(example="C")
+    value: float = Field(example=10)
 
 
 class QueryMeta(BaseModel):
