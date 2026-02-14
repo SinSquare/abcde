@@ -21,11 +21,11 @@ Instead I implemented a technique similar to Named Entity Recognition - extract 
 The solution has the following features/limitations:
 - supports temperature, humidity, rain and wind metric with similarity (typo, case insensitive) support. the supported values are hardcoded, no dynamic values from DB.
 - supports min, max, sum and average aggreagtions with similarity (typo, case insensitive) support.
-- supports multiple form of date instrauctions:
+- supports multiple form of date instructions:
 - - (last|previous|past) X (days|weeks|hours|minutes|seconds|months) with similarity (typo, case insensitive) support. eg.: last 7 days
 - - (last|previous|past) (days|weeks|hours|minutes|seconds|months) with similarity (typo, case insensitive) support. eg.: previous month
 - - since (date) with similarity (typo, case insensitive) support, multiple date format. it only supports dates (no time support). eg.: 2012.01.01
-- sensor naming/support is limited. the supported values are hardcoded, no dynamic values from DB.
+- sensor naming/support is limited - it is always sensorN without whitespace. the supported values are hardcoded, no dynamic values from DB.
 - - sensor x. the "sensor" part supports similarity
 - - sensorx. in this case it only supports exact match
 - - all sensor. supports similarity
@@ -40,7 +40,7 @@ Internally the database is stored in /tmp/database.db
 I've used FastAPI as the framework because it's a realtively lightweight, modern and feature-rich framework. Also it comes with async support.
 
 ### Code quality ###
-There is very limited docstring coverage on the classes/methods/functions. Also the language parse code and logic could be reworked to a more compact and possibly beter form. The test coverage is around 94%, only the critical parts are covered with a few tests.
+There is very limited docstring coverage on the classes/methods/functions. Also the language parse code and logic could be reworked to a more compact and possibly beter form. The test coverage is around 90%, only the critical parts are covered with a few tests.
 
 
 ## Tests ##

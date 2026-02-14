@@ -1,6 +1,7 @@
 """Request and response models."""
 
-from pydantic import BaseModel, RootModel
+from datetime import datetime
+from pydantic import BaseModel, field_validator
 
 
 class QueryInput(BaseModel):
@@ -18,13 +19,26 @@ class SensorMetric(BaseModel):
     value: float
 
 
-class SensorMetricResult(RootModel):
+class QueryMeta(BaseModel):
+    """QueryMeta"""
+
+    sensor: list[str]
+    metric: list[str]
+    aggregation: str
+    date: datetime | None
+
+
+class SensorInput(SensorMetric):
+    """SensorInput"""
+
+    @field_validator("sensor", "metric")
+    @classmethod
+    def remove_all_spaces(cls, v: str) -> str:
+        return v.replace(" ", "")
+
+
+class SensorMetricResult(BaseModel):
     """SensorMetricResult"""
 
-    root: list[SensorMetric]
-
-    def __iter__(self):  # pragma: no cover
-        return iter(self.root)
-
-    def __getitem__(self, item):  # pragma: no cover
-        return self.root[item]
+    data: list[SensorMetric]
+    meta: QueryMeta

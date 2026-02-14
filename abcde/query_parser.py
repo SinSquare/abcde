@@ -87,6 +87,7 @@ EXTRACT_PIPES = {
 class Query:
     def __init__(self, text):
         self.text = text
+        self.parsed = None
 
     def parse(self):
         def check_match(pipe, words, index):
@@ -122,6 +123,7 @@ class Query:
                 f"Could not extract all information from the Query. Missing: {','.join(missing)}"
             )
 
+        self.parsed = matches
         return matches
 
     def _latest_stmt(self, parsed):

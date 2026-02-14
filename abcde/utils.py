@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import functools
 
 from fastapi import Depends
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import Session, create_engine
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 
 from abcde.config import Config
@@ -34,7 +34,7 @@ def get_async_engine():
 async def create_db_and_tables():
     engine = get_async_engine()
     async with engine.begin() as conn:
-        await conn.run_sync(SQLModel.metadata.create_all)
+        await conn.run_sync(Base.metadata.create_all)
 
 
 async def get_session():
