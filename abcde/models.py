@@ -4,6 +4,7 @@ from pydantic import BaseModel, RootModel
 
 
 class QueryInput(BaseModel):
+    """QueryInput"""
     query: str
 
 
@@ -17,7 +18,7 @@ class SensorMetric(BaseModel):
 
 
 class SensorMetricResult(RootModel):
-    """Sort Output model"""
+    """SensorMetricResult"""
 
     root: list[SensorMetric]
 
